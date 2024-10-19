@@ -9,7 +9,7 @@ class Pessoa:
     def respirar(self):
         print('Respirando...')
 
-davi = Pessoa('Davi', 25)
+davi = Pessoa('Davi', 100)
 print(davi)
 davi.respirar()
 

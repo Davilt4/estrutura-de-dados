@@ -18,4 +18,19 @@ leao = Animal('Leão')
 print(leao.nome)
 leao.comer('Carne')
 
+class Camera:
+    def __init__(self,nome,filmando = False):
+        self.nome = nome
+        self.filmando = filmando
+    
+    def ligar(self):
+        self.filmando = True
+        print(f'{self.nome} está Filmando')
 
+    def desligar(self):
+        self.filmando = False
+        print(f'Desligando {self.nome}')
+
+c1 = Camera('C1')
+c1.ligar()
+c1.desligar()        
