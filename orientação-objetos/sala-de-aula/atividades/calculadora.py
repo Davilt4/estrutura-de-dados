@@ -28,16 +28,20 @@ class Calculadora:
         return self.num1 / self.num2
 
     def __str__(self):
-        return f'Operação: {self.op}, números: {self.num1} e {self.num2}, resultado: {self.resultado}'
+        return f'Operação: {self.op}, números: {self.num1} e {self.num2}, resultado: {self.resultado:.2f}' #resultado arrendado para 2 casas decimais
 
 lista = []
 
 nome_usuario = input("Digite seu nome: ")
-print(f"Olá, {nome_usuario}! Escolha a operação que deseja realizar:")
-time.sleep(2)
+primeira_execucao = True
+
 
 while True:
     limpar_tela()
+    if primeira_execucao:
+        print(f"Olá, {nome_usuario}! Escolha a operação que deseja realizar:")
+        primeira_execucao = False
+
     print("(+) Soma")
     print("(-) Subtração")
     print("(*) Multiplicação")
@@ -72,7 +76,7 @@ while True:
         print("Operação inválida. Tente novamente.")
         continue
 
-    print(f"Resultado: {calc.resultado}")
+    print(f"Resultado: {calc.resultado:.2f}") #resultado arrendado para 2 casas decimais
 
     lista.append(calc)
 
