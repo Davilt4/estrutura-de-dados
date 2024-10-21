@@ -57,6 +57,9 @@ while True:
     while True:
         try:
             num1, num2 = map(float, input("Digite os dois números separados por um espaço: ").split())
+            if op == "/" and num2 == 0:
+                print("Erro: Divisão por zero!")
+                continue
         except ValueError:
             print("Erro: Entrada inválida! Certifique-se de digitar números corretamente.")
             continue
@@ -84,7 +87,8 @@ while True:
     if continuar == "n":
         break
   
-limpar_tela
+limpar_tela()
+
 print(f"\nHistórico de operações realizadas por {nome_usuario}:")
 for item in lista:
     print(item)
