@@ -1,5 +1,4 @@
 import os
-import time
 
 def limpar_tela():
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -23,12 +22,10 @@ class Calculadora:
         return self.num1 * self.num2
 
     def divisao(self):
-        if self.num2 == 0:
-            return "Erro: Divisão por zero!"
         return self.num1 / self.num2
 
     def __str__(self):
-        return f'Operação: {self.op}, números: {self.num1} e {self.num2}, resultado: {self.resultado:.2f}' #resultado arrendado para 2 casas decimais
+        return f'Operação: {self.op}, números: {self.num1} e {self.num2}, resultado: {self.resultado:.2f}' #resultado arredondado para 2 casas decimais
 
 lista = []
 
@@ -79,7 +76,7 @@ while True:
         print("Operação inválida. Tente novamente.")
         continue
 
-    print(f"Resultado: {calc.resultado:.2f}") #resultado arrendado para 2 casas decimais
+    print(f"Resultado: {calc.resultado:.2f}") #resultado arredondado para 2 casas decimais
 
     lista.append(calc)
 
