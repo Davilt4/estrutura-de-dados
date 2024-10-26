@@ -1,4 +1,4 @@
-# Getter e Property
+# Getter e Property e Setter
 
 class Caneta:
     def __init__(self, cor):
