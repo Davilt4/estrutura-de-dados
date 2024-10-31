@@ -1,0 +1,3 @@
+Associação: Um objeto se comunica com um objeto
+Agregação: Um objeto precisa de outro objeto
+Composição: Um objeto gerencia o ciclo de vida de outro objeto
