@@ -1,4 +1,5 @@
 from carta import Carta
+from jogador import Jogador
 
 class Baralho:
     valor_das_cartas = {"A": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8, "9": 9, "10": 10, "Valete": 11, "Dama": 12, "Rei": 13}
@@ -16,7 +17,7 @@ class Baralho:
     def distribuir_cartas(self, *jogadores, qtd_cartas):
         for jogador in jogadores:
             for i in range(qtd_cartas):
-                jogador.add_carta(self.__cartas.pop()) # Alé de adionar cartas na mao, tambem remove a carta do baralho
+                jogador.add_carta(self.__cartas.pop()) # Alem de adionar cartas na mao, tambem remove a carta do baralho
     
     def __str__(self):
         return f"Baralho com {len(self.__cartas)} cartas"
