@@ -1,0 +1,3 @@
+Log: Mensagem de log (classe: LogFileMixin)
+Log: ERRO: Mensagem de erro (classe: LogFileMixin)
+Log: SUCESSO: Mensagem de sucesso (classe: LogFileMixin)
