@@ -15,10 +15,10 @@ class Batalha:
     def iniciar_batalha(self):
         print("Batalha iniciada!")
         print("Embaralhando cartas...")
-        time.sleep(1)
+        # time.sleep(1)
         self.baralho.embaralhar()
         print("Distribuindo cartas...")
-        time.sleep(1)
+        # time.sleep(1)
         self.baralho.distribuir_cartas(self.jogador1, self.jogador2, qtd_cartas=26)
         
     def rodada(self):
@@ -41,8 +41,8 @@ class Batalha:
                 for carta in cartas_empate:
                     self.jogador1.inserir_carta(carta)
                 cartas_empate = []
-            self.jogador1.add_carta(carta_jogador1)
-            self.jogador1.add_carta(carta_jogador2)
+            self.jogador1.inserir_carta(carta_jogador1)
+            self.jogador1.inserir_carta(carta_jogador2)
 
         elif self.baralho.valor_das_cartas[carta_jogador1.valor] < self.baralho.valor_das_cartas[carta_jogador2.valor]:
             print("Jogador 2 ganha a rodada!")
@@ -52,26 +52,36 @@ class Batalha:
                     self.jogador2.inserir_carta(carta)
                 cartas_empate = []
 
-            self.jogador2.add_carta(carta_jogador1)
-            self.jogador2.add_carta(carta_jogador2)
+            self.jogador2.inserir_carta(carta_jogador1)
+            self.jogador2.inserir_carta(carta_jogador2)
         else:
             print("Empate!")
             cartas_empate.append(carta_jogador1)
             cartas_empate.append(carta_jogador2)
         print("Rodada encerrada!")
 
-batalha = Batalha()
-batalha.iniciar_batalha()
-while batalha.jogador1.len_mao() > 0 and batalha.jogador2.len_mao() > 0:
-    batalha.rodada()
+ganhadores = []
+for i in range(5):
+    batalha = Batalha()
+    batalha.iniciar_batalha()
+    while batalha.jogador1.len_mao() > 0 and batalha.jogador2.len_mao() > 0:
+        batalha.rodada()
 
-if batalha.jogador1.len_mao() == 0:
-    limpar_tela = os.system('cls' if os.name == 'nt' else 'clear')
-    print("Jogador 1 venceu a batalha!")
+    if batalha.jogador1.len_mao() == 0 or batalha.jogador2.len_mao() == 0:
+        for jogador in batalha.jogadores:
+            for carta in jogador.montante:
+                jogador.pontos+= batalha.baralho.valor_das_cartas[carta.valor]
+    if batalha.jogador1.pontos > batalha.jogador2.pontos:
+        ganhadores.append(f"{batalha.jogador1.nome} venceu! - {batalha.jogador1.pontos} pontos contra {batalha.jogador2.pontos} pontos")
+    elif batalha.jogador1.pontos < batalha.jogador2.pontos:
+        ganhadores.append(f"{batalha.jogador2.nome} venceu! - {batalha.jogador2.pontos} pontos contra {batalha.jogador1.pontos} pontos")
+    else:
+        ganhadores.append(f"Empate! - {batalha.jogador1.pontos} pontos contra {batalha.jogador2.pontos} pontos")
+        
 
-else:
-    limpar_tela = os.system('cls' if os.name == 'nt' else 'clear')
-    print("Jogador 2 venceu a batalha!")
+    print(batalha.jogador1)
+    print(batalha.jogador2)
 
-print(batalha.jogador1)
-print(batalha.jogador2)
+limpar_tela = os.system('cls' if os.name == 'nt' else 'clear')
+for ganhador in ganhadores:
+    print(ganhador)

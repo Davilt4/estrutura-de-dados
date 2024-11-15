@@ -2,15 +2,17 @@ class Jogador:
     def __init__(self, nome):
         self.nome = nome
         self.__mao = []
+        self.montante = []
+        self.pontos = 0
 
     def __str__(self):
-        return f"{self.nome} tem {len(self.__mao)} cartas"
+        return f"{self.nome} tem {len(self.__mao)} cartas e {self.pontos} pontos"
     
     def add_carta(self, carta):
         self.__mao.append(carta)
     
     def inserir_carta(self, carta):
-        self.__mao.insert(0, carta)
+        self.montante.insert(0, carta)
 
     def mostrar_mao(self):
         print(F"Cartas de {self.nome}:")
