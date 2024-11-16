@@ -61,27 +61,24 @@ class Batalha:
         print("Rodada encerrada!")
 
 ganhadores = []
-for i in range(5):
-    batalha = Batalha()
-    batalha.iniciar_batalha()
-    while batalha.jogador1.len_mao() > 0 and batalha.jogador2.len_mao() > 0:
-        batalha.rodada()
 
-    if batalha.jogador1.len_mao() == 0 or batalha.jogador2.len_mao() == 0:
-        for jogador in batalha.jogadores:
-            for carta in jogador.montante:
-                jogador.pontos+= batalha.baralho.valor_das_cartas[carta.valor]
-    if batalha.jogador1.pontos > batalha.jogador2.pontos:
-        ganhadores.append(f"{batalha.jogador1.nome} venceu! - {batalha.jogador1.pontos} pontos contra {batalha.jogador2.pontos} pontos")
-    elif batalha.jogador1.pontos < batalha.jogador2.pontos:
-        ganhadores.append(f"{batalha.jogador2.nome} venceu! - {batalha.jogador2.pontos} pontos contra {batalha.jogador1.pontos} pontos")
-    else:
-        ganhadores.append(f"Empate! - {batalha.jogador1.pontos} pontos contra {batalha.jogador2.pontos} pontos")
-        
+batalha = Batalha()
+batalha.iniciar_batalha()
+while batalha.jogador1.len_mao() > 0 and batalha.jogador2.len_mao() > 0:
+    batalha.rodada()
 
-    print(batalha.jogador1)
-    print(batalha.jogador2)
-
-limpar_tela = os.system('cls' if os.name == 'nt' else 'clear')
+if batalha.jogador1.len_mao() == 0 or batalha.jogador2.len_mao() == 0:
+    for jogador in batalha.jogadores:
+        for carta in jogador.montante:
+            jogador.pontos+= batalha.baralho.valor_das_cartas[carta.valor]
+        for carta in jogador.get_mao():
+            jogador.pontos+= batalha.baralho.valor_das_cartas[carta.valor]
+if batalha.jogador1.pontos > batalha.jogador2.pontos:
+    ganhadores.append(f"{batalha.jogador1.nome} venceu! - {batalha.jogador1.pontos} pontos contra {batalha.jogador2.pontos} pontos")
+elif batalha.jogador1.pontos < batalha.jogador2.pontos:
+    ganhadores.append(f"{batalha.jogador2.nome} venceu! - {batalha.jogador2.pontos} pontos contra {batalha.jogador1.pontos} pontos")
+else:
+    ganhadores.append(f"Empate! - {batalha.jogador1.pontos} pontos contra {batalha.jogador2.pontos} pontos")
+    
 for ganhador in ganhadores:
     print(ganhador)

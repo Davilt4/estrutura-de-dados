@@ -23,5 +23,8 @@ class Jogador:
     def len_mao(self):
         return len(self.__mao)
 
+    def get_mao(self):
+        return self.__mao
+
     def puxar_carta(self):
         return self.__mao.pop()
