@@ -6,6 +6,9 @@ from jogador import Jogador
 #Batalha simulada com apenas 2 jogadores
 #Rode esse arquivo para iniciar a batalha
 
+def limpar_tela():
+    os.system("cls" if os.name == "nt" else "clear")
+
 class Batalha:
     def __init__(self):
         self.baralho = Baralho()
@@ -16,11 +19,12 @@ class Batalha:
     def iniciar_batalha(self):
         print("Batalha iniciada!")
         print("Embaralhando cartas...")
-        # time.sleep(1)
+        time.sleep(1)
         self.baralho.embaralhar()
         print("Distribuindo cartas...")
-        # time.sleep(1)
+        time.sleep(1)
         self.baralho.distribuir_cartas(self.jogador1, self.jogador2, qtd_cartas=26)
+        print()
         
     def rodada(self):
         global cartas_empate
@@ -41,9 +45,11 @@ class Batalha:
             if cartas_empate:
                 for carta in cartas_empate:
                     self.jogador1.inserir_carta(carta)
+                    print(f"Jogador 1 recebeu {carta}")
                 cartas_empate = []
             self.jogador1.inserir_carta(carta_jogador1)
             self.jogador1.inserir_carta(carta_jogador2)
+            print(f"Jogador 1 recebeu {carta_jogador1} e {carta_jogador2} ")
 
         elif self.baralho.valor_das_cartas[carta_jogador1.valor] < self.baralho.valor_das_cartas[carta_jogador2.valor]:
             print("Jogador 2 ganha a rodada!")
@@ -51,19 +57,23 @@ class Batalha:
             if cartas_empate:
                 for carta in cartas_empate:
                     self.jogador2.inserir_carta(carta)
+                    print(f"Jogador 2 recebeu {carta}")
                 cartas_empate = []
 
             self.jogador2.inserir_carta(carta_jogador1)
             self.jogador2.inserir_carta(carta_jogador2)
+            print(f"Jogador 2 recebeu {carta_jogador1} e {carta_jogador2} ")
         else:
             print("Empate!")
             cartas_empate.append(carta_jogador1)
             cartas_empate.append(carta_jogador2)
         print("Rodada encerrada!")
+        print()
 
 ganhadores = []
 cartas_empate = []
 
+limpar_tela()
 batalha = Batalha()
 batalha.iniciar_batalha()
 while batalha.jogador1.len_mao() > 0 and batalha.jogador2.len_mao() > 0:
