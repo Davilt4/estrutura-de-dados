@@ -23,7 +23,7 @@ class Batalha:
         self.baralho.distribuir_cartas(self.jogador1, self.jogador2, qtd_cartas=26)
         
     def rodada(self):
-        cartas_empate = []
+        global cartas_empate
         print("Rodada iniciada!")
         print("Jogador 1 puxa carta...")
         # time.sleep(1)
@@ -62,6 +62,7 @@ class Batalha:
         print("Rodada encerrada!")
 
 ganhadores = []
+cartas_empate = []
 
 batalha = Batalha()
 batalha.iniciar_batalha()
