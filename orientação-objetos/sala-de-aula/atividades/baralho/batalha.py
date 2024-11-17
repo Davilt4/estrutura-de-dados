@@ -4,6 +4,7 @@ from baralho import Baralho
 from jogador import Jogador
 
 #Batalha simulada com apenas 2 jogadores
+#Rode esse arquivo para iniciar a batalha
 
 class Batalha:
     def __init__(self):
