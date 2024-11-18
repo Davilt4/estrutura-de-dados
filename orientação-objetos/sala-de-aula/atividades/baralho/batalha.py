@@ -45,7 +45,7 @@ class Batalha:
             if cartas_empate:
                 for carta in cartas_empate:
                     self.jogador1.inserir_carta(carta)
-                    print(f"Jogador 1 recebeu {carta}")
+                    print(f"Jogador 1 recebeu {carta}"("De empate"))
                 cartas_empate = []
             self.jogador1.inserir_carta(carta_jogador1)
             self.jogador1.inserir_carta(carta_jogador2)
@@ -57,7 +57,7 @@ class Batalha:
             if cartas_empate:
                 for carta in cartas_empate:
                     self.jogador2.inserir_carta(carta)
-                    print(f"Jogador 2 recebeu {carta}")
+                    print(f"Jogador 2 recebeu {carta}(De empate)")
                 cartas_empate = []
 
             self.jogador2.inserir_carta(carta_jogador1)
