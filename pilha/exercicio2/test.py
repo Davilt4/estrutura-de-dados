@@ -54,12 +54,24 @@ while True:
     elif op == "r":
         criar_pilha()
     elif op == "n":
-        ...
+        print(pilha_sorteada.inverte)
     elif op == "z":
         ...
     elif op == "c":
-        ...
+        def concatenar(pilha1, pilha2):
+            pilha3 = Pilha()
+            while not pilha1.estah_vazia():
+                pilha3.empilhar(pilha1.desempilhar())
+            while not pilha2.estah_vazia():
+                pilha3.empilhar(pilha2.desempilhar())
+            return pilha3
+        print(concatenar(pilha_sorteada, pilha_sorteada))
     elif op == "m":
         ...
+    elif op == "l":
+        for idx, pilha in enumerate(pilhas):
+            print(f"{idx}: {pilha}")
+    elif op == "p":
+        print(pilha_sorteada)
     elif op == "s":
         break

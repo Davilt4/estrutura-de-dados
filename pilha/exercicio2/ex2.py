@@ -41,6 +41,8 @@ Pilha Selecionada: {self.local} de 10
 (c) Concatenar duas pilhas
 (m) Escolher outra pilha
 (n) Conversão dec/bin
+(l)listar pilhas
+(p)Printar
 (s) Sair
 =====================================
 ''')
@@ -62,6 +64,15 @@ Pilha Selecionada: {self.local} de 10
         if self.estah_vazia:
             raise PilhaVaziaException()
         return self.__topo.dado
+    
+    @property
+    def inverte(self):
+        if self.estah_vazia:
+            raise PilhaVaziaException()
+        pilha_invertida = Pilha()
+        while not self.estah_vazia:
+            pilha_invertida.empilhar(self.desempilhar())
+        return pilha_invertida
 
     def __len__(self) -> int:
         return self.tamanho
