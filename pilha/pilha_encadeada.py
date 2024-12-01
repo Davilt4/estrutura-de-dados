@@ -18,11 +18,10 @@ class LinkedStack:
         return self.head.value
     
     def push(self,value):
-        new_node = Node(value)
-        new_node.next = self.head 
-        self.head = new_node
+        new_node = Node(value) # 1 -> 2 -> 3
+        new_node.next = self.head # 1 -> None // 2 -> 1 // 3 -> 2
+        self.head = new_node # 1 -> 2 -> 3
     
-
     def pop(self):
         if self.is_empty:
             raise IndexError("A pilha está vazia")
@@ -67,6 +66,10 @@ def main():
     peek = stack.peek
     print(head)
     print(peek)
+
+    stack.push(4)
+    print(stack)
+    print(stack.peek)
 
 if __name__ == "__main__":
     main()    
