@@ -67,7 +67,7 @@ while True:
     elif op == "n":
         print(pilha_sorteada.invertida)
 
-    elif op == "c": #Pensar sobre como fazer sem esvaziar as pilhas
+    elif op == "c": #Ainda nao esta 100% funcional
         pilha1_input = int(input("Digite o indice da pilha 1: "))
         pilha2_input = int(input("Digite o indice da pilha 2: "))
         pilha1 = pilhas[pilha1_input-1]

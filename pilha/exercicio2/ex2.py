@@ -61,7 +61,7 @@ class Pilha:
         print(f'''
 Editor de Pilha v1.2
 =====================================
-Pilha Selecionada: {self.local} de 10
+Pilha Selecionada: {self.local+1} de 10
 [ {self.obtem_topo} ] <- topo
 =====================================
 (e) Empilhar
@@ -105,8 +105,15 @@ Pilha Selecionada: {self.local} de 10
         if self.estah_vazia:
             raise PilhaVaziaException()
         pilha_invertida = Pilha()
-        while not self.estah_vazia:
-            pilha_invertida.empilhar(self.desempilhar())
+        topo = self.__topo
+        valor = topo.dado
+        while valor is not None:
+            pilha_invertida.empilhar(valor)
+            topo = topo.proximo
+            if topo is not None:
+                valor = topo.dado
+            else:
+                valor = None
         return pilha_invertida
 
     def __len__(self) -> int:
