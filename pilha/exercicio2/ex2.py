@@ -17,6 +17,40 @@ class No:
 
 class Pilha:
     # solução utilizando encadeamento de objetos
+    
+    @classmethod
+
+    def concatenar(cls, pilha1, pilha2):
+        pilha_resultante = Pilha()
+        if pilha1.estah_vazia:
+            pilha_resultante = pilha2
+        elif pilha2.estah_vazia:
+            pilha_resultante = pilha1
+        elif pilha1.estah_vazia and pilha2.estah_vazia:
+            raise PilhaVaziaException
+        else:
+           topo1 = pilha1.__topo
+           valor1 = topo1.dado
+           topo2 = pilha2.__topo
+           valor2 = topo2.dado
+
+        while valor2 is not None:
+            pilha_resultante.empilhar(valor2)
+            topo2 = topo2.proximo
+            if topo2 is not None:
+                valor2 = topo2.dado
+            else:
+                valor2 = None 
+                
+        while valor1 is not None:
+            pilha_resultante.empilhar(valor1)
+            topo1 = topo1.proximo
+            if topo1 is not None:
+                valor1 = topo1.dado
+            else:
+                valor1 = None
+              
+        return pilha_resultante
 
     def __init__(self):
         self.__topo: No|None = None
@@ -91,7 +125,7 @@ Pilha Selecionada: {self.local} de 10
         self.__tamanho -= 1
         return valor
     
-    # ----- Metodos da atividade ----
+    # ----- Metodos da atividade 1 ----
     def subTopo(self)->int:
         if self.estah_vazia or self.__topo.proximo is None:
             raise PilhaException()

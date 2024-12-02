@@ -8,10 +8,10 @@ pilhas = []
 def limpar_tela():
     os.system('cls' if os.name == 'nt' else 'clear')
 
-def criar_pilhas(qntd):
-    for i in range(1,qntd+1):
+def criar_pilhas(qntd,qntd_valores):
+    for i in range(0,qntd):
         pilha = Pilha()
-        for j in range(10):
+        for j in range(qntd_valores):
             pilha.empilhar(random.randint(0, 9))
         pilha.local = i
         pilhas.append(pilha)
@@ -21,14 +21,14 @@ def listar_pilhas(pilhas):
     for idx, pilha in enumerate(pilhas):
         print(f"{idx+1}: {pilha}")
 
-def concatenar_pilhas(pilha1, pilha2): # Pensar sobre como fazer sem ser que esvaziar as pilhas.
-    pilha_resultante = Pilha()
-
 #---------------------------------------------------------------------
 
-criar_pilhas(10)
-pilha_sorteada = pilhas[random.randint(0, 9)]
+qntd = 2
+qntd_valores = 5
+criar_pilhas(qntd,qntd_valores)
+pilha_sorteada = pilhas[random.randint(0,qntd-1)]
 pilha_sorteada.menu
+
 
 while True:
     op = input("O que quer fazer: ")
@@ -68,8 +68,17 @@ while True:
         print(pilha_sorteada.invertida)
 
     elif op == "c": #Pensar sobre como fazer sem esvaziar as pilhas
-        ...
+        pilha1_input = int(input("Digite o indice da pilha 1: "))
+        pilha2_input = int(input("Digite o indice da pilha 2: "))
+        pilha1 = pilhas[pilha1_input-1]
+        pilha2 = pilhas[pilha2_input-1]
+           
+        print("Concatenacao feita com sucesso")
+        print("Pilha 1: ", pilha1)
+        print("Pilha 2: ", pilha2)
+        print("Pilha resultante: ", Pilha.concatenar(pilha1, pilha2) )
 
+        
     elif op == "m":
         nova_pilha_input = input("Manualmente ou aleatoriamente? (m/a): ")
         if nova_pilha_input == "m":
