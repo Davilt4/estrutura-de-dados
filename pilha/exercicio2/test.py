@@ -55,7 +55,7 @@ while True:
             print("Pilha vazia")
 
     elif op == "v":
-      if pilha_sorteada.estah_vazia():
+      if pilha_sorteada.estah_vazia:
         print("Pilha vazia")
       else:
         print("Pilha nao vazia")
