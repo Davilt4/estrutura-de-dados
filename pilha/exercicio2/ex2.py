@@ -44,6 +44,7 @@ Pilha Selecionada: {self.local} de 10
 (l)listar pilhas
 (p)Printar
 (s) Sair
+(lt) Limpar tela
 =====================================
 ''')
 
@@ -66,7 +67,7 @@ Pilha Selecionada: {self.local} de 10
         return self.__topo.dado
     
     @property
-    def inverte(self):
+    def invertida(self): # Só retornar a pilha invertida ou mudar a pilha?????
         if self.estah_vazia:
             raise PilhaVaziaException()
         pilha_invertida = Pilha()

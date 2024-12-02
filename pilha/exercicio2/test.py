@@ -4,22 +4,31 @@ import os
 
 pilhas = []
 
+ # --------------------- FUNCOES UTILITARIAS ---------------------
 def limpar_tela():
     os.system('cls' if os.name == 'nt' else 'clear')
 
-def criar_pilha():
-    pilha = Pilha()
-    for i in range(10):
-        pilha.empilhar(random.randint(0, 9))
-    pilha.local = i
-    pilhas.append(pilha)
+def criar_pilhas(qntd):
+    for i in range(1,qntd+1):
+        pilha = Pilha()
+        for j in range(10):
+            pilha.empilhar(random.randint(0, 9))
+        pilha.local = i
+        pilhas.append(pilha)
 
-for i in range(10):
-    criar_pilha()
 
+def listar_pilhas(pilhas):
+    for idx, pilha in enumerate(pilhas):
+        print(f"{idx+1}: {pilha}")
+
+def concatenar_pilhas(pilha1, pilha2): # Pensar sobre como fazer sem ser que esvaziar as pilhas.
+    pilha_resultante = Pilha()
+
+#---------------------------------------------------------------------
+
+criar_pilhas(10)
 pilha_sorteada = pilhas[random.randint(0, 9)]
 pilha_sorteada.menu
-
 
 while True:
     op = input("O que quer fazer: ")
@@ -52,26 +61,39 @@ while True:
         print("Pilha nao vazia")
 
     elif op == "r":
-        criar_pilha()
+        criar_pilhas()
+        print("Pilha criada com sucesso")
+
     elif op == "n":
-        print(pilha_sorteada.inverte)
-    elif op == "z":
+        print(pilha_sorteada.invertida)
+
+    elif op == "c": #Pensar sobre como fazer sem esvaziar as pilhas
         ...
-    elif op == "c":
-        def concatenar(pilha1, pilha2):
-            pilha3 = Pilha()
-            while not pilha1.estah_vazia():
-                pilha3.empilhar(pilha1.desempilhar())
-            while not pilha2.estah_vazia():
-                pilha3.empilhar(pilha2.desempilhar())
-            return pilha3
-        print(concatenar(pilha_sorteada, pilha_sorteada))
+
     elif op == "m":
-        ...
+        nova_pilha_input = input("Manualmente ou aleatoriamente? (m/a): ")
+        if nova_pilha_input == "m":
+            listar_pilhas(pilhas)
+            pilha_input = int(input("Digite o indice da pilha: "))
+            pilha_sorteada = pilhas[pilha_input-1]
+            limpar_tela()
+            pilha_sorteada.menu
+        elif nova_pilha_input == "a":
+            pilha_sorteada = pilhas[random.randint(0, 9)]
+            limpar_tela()
+            pilha_sorteada.menu
+
     elif op == "l":
-        for idx, pilha in enumerate(pilhas):
-            print(f"{idx}: {pilha}")
+        listar_pilhas(pilhas)
+
     elif op == "p":
         print(pilha_sorteada)
+
     elif op == "s":
         break
+
+    elif op == "lt":
+        limpar_tela()
+        pilha_sorteada.menu
+        op = input("O que quer fazer: ")
+
